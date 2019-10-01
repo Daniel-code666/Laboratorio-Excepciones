@@ -1,0 +1,94 @@
+package pruebaexception;
+
+import javax.swing.JOptionPane;
+
+public class PruebaExcepcion{  
+	
+    public static void main(String args[]){
+        //formatoNumero();
+        //formatoNumero2();
+        //desborde();
+        //aritmetico();
+        div();
+    }   
+
+    //excepción sin tratar 
+    public static void formatoNumero(){
+
+    int numero;   
+    String cadena="1";   
+            numero = Integer.parseInt(cadena);   
+
+    }
+    
+    //excepción tratada
+    public static void formatoNumero2(){
+
+        int numero;   
+        String cadena = "  1";
+        
+        try
+        {   
+                numero = Integer.parseInt(cadena);   
+        }   
+        catch(NumberFormatException ex){   
+            System.out.println("No es un número, es una cadena de texto." + ex.getMessage());       
+        }   
+    }
+    
+    public static void desborde(){
+ 
+        int v[]= new int[3];
+        
+        try
+        {   
+            for(int i = 0; i < 5; i++){
+                
+                v[i]=i;
+                
+            }   
+        }   
+        catch(ArrayIndexOutOfBoundsException ex){   
+            System.out.println("El arreglo solo almacena 3 posiciones." + ex.getMessage());       
+        }                     
+    }
+    
+    public static void aritmetico(){
+ 
+        int numero = 5, resultado;
+
+        try
+        {   
+            resultado = numero/0;
+        }   
+        catch(ArithmeticException ex){   
+            System.out.println("Está dividiendo por cero. " + ex.getMessage());       
+        }  
+    }
+    
+    public static void div(){
+
+        int result;
+        
+        try
+        {   
+            int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese número"));
+            if(num < 10)
+            {
+                throw new exception(num);
+            }
+            int div = Integer.parseInt(JOptionPane.showInputDialog("Ingrese divisor"));
+            result = num / div;
+            JOptionPane.showMessageDialog(null, "Número entero: " + num + " Divisor: " + div + " Resultado: " + result);          
+        }  
+        catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Se admiten solo números. " + ex.getMessage());
+        }
+        catch(ArithmeticException ex){   
+            JOptionPane.showMessageDialog(null, "Está dividiendo por cero. " + ex.getMessage()); 
+        }  
+        catch(exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+}
