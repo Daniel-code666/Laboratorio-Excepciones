@@ -1,0 +1,24 @@
+package pruebaexception;
+
+public class exception extends RuntimeException{
+    
+    protected int valorMenor;
+    
+    public exception(int valorMenor) {
+        super();
+        this.valorMenor = valorMenor;
+    }
+    public int getValorMenor() {
+        return valorMenor;
+    }  
+    
+    public String getMessage(){
+         
+        String mensaje = "";
+         
+        mensaje = "El número debe se mayor de 10";
+         
+        return mensaje;
+         
+    }
+}
